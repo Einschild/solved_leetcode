@@ -1,21 +1,22 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         words = s.split(' ')
+
         if len(words) != len(pattern):
             return False
 
-        matched = {}
+        patternDict = {}
+        wordDict = {}
 
-        for char, word in zip(pattern, words):
-            patternKey = ('pattern', char)
-            wordKey = ('word', word)
-
-            if patternKey in matched and matched[patternKey] != word:
-                return False
-            elif wordKey in matched and matched[wordKey] != char:
-                return False
-
-            matched[patternKey] = word
-            matched[wordKey] = char
+        for i in range(len(pattern)):
+            if pattern[i] in patternDict:
+                if words[i] != patternDict[pattern[i]]:
+                    return False
+            elif words[i] in wordDict:
+                if pattern[i] != wordDict[words[i]]:
+                    return False
+            else:
+                patternDict[pattern[i]] = words[i]
+                wordDict[words[i]] = pattern[i]
             
         return True
