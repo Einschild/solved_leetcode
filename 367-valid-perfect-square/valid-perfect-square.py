@@ -7,7 +7,7 @@ class Solution:
             mid = (low + high) // 2
             if mid * mid == num:
                 return True
-            if mid * mid < num:
+            elif mid * mid < num:
                 low = mid + 1
             else:
                 high = mid - 1
