@@ -7,4 +7,4 @@ class Solution:
             else:
                 ptr += 1
         
-        return (ptr - len(bits)) % 2 == 1
+        return ptr == len(bits) - 1
