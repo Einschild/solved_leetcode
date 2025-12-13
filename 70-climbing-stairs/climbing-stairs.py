@@ -1,15 +1,11 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        n1 = 2
-        n2 = 1
-        res = 0
-
-        if n <= 2:
-            return n
+        arr = [0] * n
         
-        for i in range(2, n):
-            res = n1 + n2
-            n2 = n1
-            n1 = res
+        for i in range(n):
+            if i < 2:
+                arr[i] += i + 1
+            else:
+                arr[i] += arr[i - 1] + arr[i - 2]
 
-        return res
+        return arr[n - 1]
